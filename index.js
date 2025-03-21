@@ -41,4 +41,30 @@ const horizontals = Array(cells - 1)
 .fill(null)
 .map(() => Array(cells).fill(false));
 
-console.log(grid, verticals, horizontals);
+const startRow = Math.floor(Math.random() * cells);
+const startColumn = Math.floor(Math.random() * cells);
+
+const moveThroughCell = (row, column) => {
+  // If i have visited the cell at [row, column], then return
+  // i dont need to write '===' true because our grid array is already storing boolean values
+  if (grid[row][column]) {
+    return;
+  }
+
+  // mark this cell as being visited
+  grid[row][column] = true;
+  // Assemble randomly ordered list of neighbours
+
+  // For reach neighbour...
+
+  // See if the neighbour is out of bounds
+
+  // If we have visitied that neighbour, continue to next neighbour
+
+  // Remove a wall from either horizontals or verticals
+
+  // Visit that next cell
+};
+
+moveThroughCell(startRow, startColumn);
+console.log(grid);
