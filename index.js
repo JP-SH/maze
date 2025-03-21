@@ -29,6 +29,22 @@ World.add(world, walls);
 
 // Maze generation
 
+const shuffle = (arr) => {
+  let counter = arr.length;
+
+  while (counter > 0) {
+    const index = Math.floor(Math.random() * counter);
+
+    counter--;
+
+    const temp = arr[counter];
+    arr[counter] = arr[index];
+    arr[index] = temp;
+  }
+
+  return arr;
+};
+
 const grid = Array(cells)
   .fill(null)
   .map(() => Array(cells).fill(false));
@@ -54,7 +70,13 @@ const moveThroughCell = (row, column) => {
   // mark this cell as being visited
   grid[row][column] = true;
   // Assemble randomly ordered list of neighbours
-
+  const neighbours = shuffle([
+    [row - 1, column],
+    [row, column + 1],
+    [row + 1, column],
+    [row, column - 1]
+  ]);
+  console.log(neighbours);
   // For reach neighbour...
 
   // See if the neighbour is out of bounds
@@ -66,5 +88,4 @@ const moveThroughCell = (row, column) => {
   // Visit that next cell
 };
 
-moveThroughCell(startRow, startColumn);
-console.log(grid);
+moveThroughCell(2, 1);
